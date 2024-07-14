@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-// import { CHANGE_BY } from "../store/reducers/user.reducer"
+import { CHANGE_BY } from "../store/reducers/user.reducer"
 import { useState } from "react"
 
 import logoImg from '../assets/img/logo.png'
@@ -28,7 +28,7 @@ export function HomePage() {
                 }}>+10</button>
             </h2 >
             {/* <img src="public-logo.png" /> */}
-            {/* <img src={logoImg} /> */}
+            <img src={logoImg} />
         </section >
     )
 }
