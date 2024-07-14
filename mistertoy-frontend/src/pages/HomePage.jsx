@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 // import { CHANGE_BY } from "../store/reducers/user.reducer"
 import { useState } from "react"
 
-// import logoImg from '../assets/img/logo.png'
+import logoImg from '../assets/img/logo.png'
 
 export function HomePage() {
     // TODO: move to storeState
