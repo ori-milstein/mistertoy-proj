@@ -1,34 +1,35 @@
 import { useEffect, useState } from "react"
-import { carService } from "../services/car.service.js"
-import { Link, useParams } from "react-router-dom"
+import { toyService } from "../services/toy.service.local.js"
+import { Link, useParams, useNavigate } from "react-router-dom"
 
-export function CarDetails() {
-    const [car, setCar] = useState(null)
-    const { carId } = useParams()
+export function ToyDetails() {
+    const [toy, setToy] = useState(null)
+    const { toyId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
-        if (carId) loadCar()
-    }, [carId])
+        if (toyId) loadToy()
+    }, [toyId])
 
-    function loadCar() {
-        carService.getById(carId)
-            .then(car => setCar(car))
+    function loadToy() {
+        toyService.getById(toyId)
+            .then(toy => setToy(toy))
             .catch(err => {
-                console.log('Had issues in car details', err)
-                navigate('/car')
+                console.log('Had issues in toy details', err)
+                navigate('/toy')
             })
     }
-    if (!car) return <div>Loading...</div>
+    if (!toy) return <div>Loading...</div>
     return (
-        <section className="car-details">
-            <h1>Car vendor : {car.vendor}</h1>
-            <h5>Price: ${car.price}</h5>
+        <section className="toy-details">
+            <h1>Toy name : {toy.name}</h1>
+            <h5>Price: ${toy.price}</h5>
             <p>⛐</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p>
-            <Link to={`/car/edit/${car._id}`}>Edit</Link> &nbsp;
-            <Link to={`/car`}>Back</Link>
+            <Link to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
+            <Link to={`/toy`}>Back</Link>
             <p>
-                <Link to="/car/nJ5L4">Next Car</Link>
+                <Link to="/toy/nJ5L4">Next Toy</Link>
             </p>
         </section>
     )
