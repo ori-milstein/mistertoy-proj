@@ -1,4 +1,4 @@
-// import { toyService } from "../../services/toy.service.js"
+import { toyService } from "../../services/toy.service.local.js"
 
 //* Toys
 export const SET_TOYS = 'SET_TOYS'
@@ -21,7 +21,7 @@ const initialState = {
     isCartShown: false,
     shoppingCart: [],
     isLoading: false,
-    // filterBy: toyService.getDefaultFilter(),
+    filterBy: toyService.getDefaultFilter(),
     lastToys: []
 }
 
