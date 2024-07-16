@@ -22,7 +22,7 @@ function query(filterBy = {}) {
             if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
             const regExp = new RegExp(filterBy.txt, 'i')
             return toys.filter(toy =>
-                regExp.test(toy.vendor) &&
+                regExp.test(toy.name) &&
                 toy.price <= filterBy.maxPrice
             )
         })

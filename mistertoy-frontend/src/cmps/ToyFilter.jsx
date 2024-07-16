@@ -5,10 +5,10 @@ import { useEffectOnUpdate } from "../hooks/useEffectOnUpdate.js"
 export function ToyFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    onSetFilter = useRef(utilService.debounce(onSetFilter, 300))
+    const debouncedFilter = useRef(utilService.debounce(onSetFilter, 1000))
 
     useEffectOnUpdate(() => {
-        onSetFilter.current(filterByToEdit)
+        debouncedFilter.current(filterByToEdit)
     }, [filterByToEdit])
 
     function handleChange({ target }) {
@@ -21,11 +21,11 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         <section className="toy-filter full main-layout">
             <h2>Toys Filter</h2>
             <form >
-                <label htmlFor="vendor">Vendor:</label>
-                <input type="text"
-                    id="vendor"
+                <label htmlFor="toyName">Search:</label>
+                <input type="search"
+                    id="toyName"
                     name="txt"
-                    placeholder="By vendor"
+                    placeholder="Search"
                     value={filterByToEdit.txt}
                     onChange={handleChange}
                 />
