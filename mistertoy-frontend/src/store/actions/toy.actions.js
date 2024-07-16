@@ -48,6 +48,7 @@ export function saveToy(toy) {
     return toyService.save(toy)
         .then(savedToy => {
             store.dispatch({ type, toy: savedToy })
+            console.log('store.', store.getState())
             return savedToy
         })
         .catch(err => {

@@ -90,5 +90,3 @@ export function toyReducer(state = initialState, action = {}) {
             return state
     }
 }
-
-window.gToys = toyReducer()
