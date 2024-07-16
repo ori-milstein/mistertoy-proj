@@ -17,7 +17,7 @@ import { Provider } from 'react-redux'
 
 // import './assets/style/main.css'
 
-export function App() {
+export function RootCmp() {
 
     return (
         <Provider store={store}>
