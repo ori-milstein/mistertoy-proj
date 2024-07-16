@@ -7,12 +7,12 @@ const STORAGE_KEY = 'toyDB'
 
 export const toyService = {
     query,
+    getDefaultFilter,
     getById,
     save,
     remove,
     getEmptyToy,
     getRandomToy,
-    getDefaultFilter
 }
 
 function query(filterBy = {}) {
@@ -50,15 +50,22 @@ function save(toy) {
 
 function getEmptyToy() {
     return {
-        vendor: '',
-        price: '',
+        name: '',
+        price: 0,
+        labels: [],
+        createdAt: Date.now(),
+        inStock: true,
     }
 }
 
-function getRandomToy() {
+function getRandomToy(availableLabels) {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        name: utilService.makeLorem(2),
+        price: utilService.getRandomIntInclusive(10, 300),
+        labels: utilService.getRandomSubarray
+            (availableLabels, utilService.getRandomIntInclusive(0, availableLabels.length - 1)),
+        createdAt: Date.now(),
+        inStock: Math.random() > 0.5,
     }
 }
 

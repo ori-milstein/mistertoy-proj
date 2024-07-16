@@ -17,6 +17,7 @@ export function ToyIndex() {
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
+    const labels = useSelector(storeState => storeState.toyModule.labels)
 
     useEffect(() => {
         loadToys()
@@ -40,10 +41,11 @@ export function ToyIndex() {
     }
 
     function onAddToy() {
-        const toyToSave = toyService.getEmptyToy()
+        const toyToSave = toyService.getRandomToy(labels)
         saveToy(toyToSave)
             .then((savedToy) => {
                 showSuccessMsg(`Toy added (id: ${savedToy._id})`)
+                console.log('savedToy', savedToy)
             })
             .catch(err => {
                 showErrorMsg('Cannot add toy')

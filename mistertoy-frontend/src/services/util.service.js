@@ -1,6 +1,7 @@
 export const utilService = {
     makeId,
     makeLorem,
+    getRandomSubarray,
     getRandomIntInclusive,
     loadFromStorage,
     saveToStorage,
@@ -28,6 +29,18 @@ function makeLorem(size = 100) {
     }
     return txt
 }
+
+function getRandomSubarray(array, size) {
+    let oldArray = [...array]
+    let newArray = []
+    for (let index = 0; index < size; index++) {
+        let randomIndex = getRandomIntInclusive(0, oldArray.length - 1)
+        newArray[index] = oldArray.splice(randomIndex, 1)[0]
+    }
+    return newArray
+}
+
+
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min)

@@ -17,6 +17,7 @@ export const SET_FILTER_BY = 'SET_FILTER_BY'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 const initialState = {
+    labels: ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered'],
     toys: [],
     isCartShown: false,
     shoppingCart: [],
@@ -89,3 +90,5 @@ export function toyReducer(state = initialState, action = {}) {
             return state
     }
 }
+
+window.gToys = toyReducer()
