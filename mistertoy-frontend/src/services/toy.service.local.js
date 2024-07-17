@@ -16,14 +16,20 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
+
     return storageService.query(STORAGE_KEY)
         .then(toys => {
             if (!filterBy.txt) filterBy.txt = ''
             if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
             const regExp = new RegExp(filterBy.txt, 'i')
+
             return toys.filter(toy =>
                 regExp.test(toy.name) &&
-                toy.price <= filterBy.maxPrice
+                toy.price <= filterBy.maxPrice &&
+                (filterBy.inStock !== '' ?
+                    toy.inStock.toString() === filterBy.inStock
+                    :
+                    true)
             )
         })
 }
@@ -70,7 +76,7 @@ function getRandomToy(availableLabels) {
 }
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '' }
+    return { txt: '', maxPrice: '', inStock: '' }
 }
 
 // TEST DATA

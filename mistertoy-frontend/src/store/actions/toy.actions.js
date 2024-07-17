@@ -31,6 +31,8 @@ export function removeToy(toyId) {
 }
 
 export function removeToyOptimistic(toyId) {
+    // TO DO: Implement this
+
     store.dispatch({ type: REMOVE_TOY, toyId })
     return toyService.remove(toyId)
         .then(() => {
