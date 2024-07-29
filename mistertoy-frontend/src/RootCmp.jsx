@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 // const Router = ReactRouterDOM.BrowserRouter
 // const Router = ReactRouterDOM.HashRouter
 
+import './assets/style/main.scss'
 
 // import { AppHeader } from './cmps/AppHeader.jsx'
 // import { AppFooter } from './cmps/AppFooter.jsx'
