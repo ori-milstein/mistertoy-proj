@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { toyService } from "../services/toy.service.local.js"
+import { toyService } from "../services/toy.service.js"
 import { Link, useParams, useNavigate } from "react-router-dom"
 
 export function ToyDetails() {

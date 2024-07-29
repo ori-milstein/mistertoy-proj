@@ -30,17 +30,23 @@ function query(filterBy = {}, sortBy = {}, pageIdx) {
         const regExp = new RegExp(filterBy.txt, 'i')
         filteredToys = filteredToys.filter(toy => regExp.test(toy.name))
     }
+    if (filterBy.maxPrice) {
+        filteredToys = filteredToys.filter(toy => toy.price <= filterBy.maxPrice)
+    }
+
     if (filterBy.inStock) {
         filteredToys = filteredToys.filter(
             toy => toy.inStock === JSON.parse(filterBy.inStock)
         )
     }
+
     if (filterBy.labels && filterBy.labels.length) {
         filteredToys = filteredToys.filter(
             toy => filterBy.labels.every(label => toy.labels.includes(label))
             // filterBy.labels.some(label => toy.labels.includes(label))
         )
     }
+
     if (sortBy.type) {
         filteredToys.sort((toy1, toy2) => {
             const sortDirection = +sortBy.desc

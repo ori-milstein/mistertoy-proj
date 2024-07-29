@@ -13,17 +13,11 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
-    return httpService.get(BASE_URL, filterBy)
     // if (!filterBy.txt) filterBy.txt = ''
     // if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
     // const regExp = new RegExp(filterBy.txt, 'i')
-    // return storageService.query(STORAGE_KEY)
-    //     .then(toys => {
-    //         return toys.filter(toy =>
-    //             regExp.test(toy.vendor) &&
-    //             toy.price <= filterBy.maxPrice
-    //         )
-    //     })
+
+    return httpService.get(BASE_URL, filterBy)
 }
 
 function getById(toyId) {
@@ -42,16 +36,30 @@ function save(toy) {
     }
 }
 
+
 function getEmptyToy() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-        speed: utilService.getRandomIntInclusive(75, 200),
+        name: '',
+        price: 0,
+        labels: [],
+        createdAt: Date.now(),
+        inStock: true,
+    }
+}
+
+function getRandomToy(availableLabels) {
+    return {
+        name: utilService.makeLorem(2),
+        price: utilService.getRandomIntInclusive(10, 300),
+        labels: utilService.getRandomSubarray
+            (availableLabels, utilService.getRandomIntInclusive(0, availableLabels.length - 1)),
+        createdAt: Date.now(),
+        inStock: Math.random() > 0.5,
     }
 }
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '' }
+    return { txt: '', maxPrice: '', inStock: '' }
 }
 
 

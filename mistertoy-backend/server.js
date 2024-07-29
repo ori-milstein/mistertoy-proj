@@ -31,8 +31,10 @@ if (process.env.NODE_ENV === 'production') {
 
 // **************** Toys API ****************:
 app.get('/api/toy', (req, res) => {
-    const { filterBy = {}, sortBy = {}, pageIdx = 0 } = req.query
-    toyService.query(filterBy, sortBy, +pageIdx)
+    // const { filterBy = {}, sortBy = {}, pageIdx = 0 } = req.query
+    const filterBy = req.query
+    console.log('filterBy', filterBy)
+    toyService.query(filterBy/*, sortBy, +pageIdx*/)
         .then(toys => res.send(toys))
         .catch(err => {
             loggerService.error('Cannot load toys', err)
