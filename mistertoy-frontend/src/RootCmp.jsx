@@ -2,7 +2,8 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 // const Router = ReactRouterDOM.BrowserRouter
 // const Router = ReactRouterDOM.HashRouter
 
-import './assets/style/main.scss'
+// import './assets/style/main.scss'
+import './style/main.scss'
 
 // import { AppHeader } from './cmps/AppHeader.jsx'
 // import { AppFooter } from './cmps/AppFooter.jsx'
@@ -23,9 +24,9 @@ export function RootCmp() {
     return (
         <Provider store={store}>
             <Router>
-                <section className="app">
+                <section className="main-layout app">
                     {/* <AppHeader /> */}
-                    <main className='main-layout'>
+                    <main >
                         <Routes>
                             <Route element={<HomePage />} path="/" />
                             {/* <Route element={<AboutUs />} path="/about" /> */}
